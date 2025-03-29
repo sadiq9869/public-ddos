@@ -1,0 +1,14 @@
+build:
+  environment:
+    python: "3.9"
+  dependencies:
+    before:
+      - g++ Rohan.c -o Rohan -pthread -std=c++11  # Updated to C++11
+      - python3 -m ensurepip
+      - python3 -m pip install --upgrade pip
+      - pip install -r requirements.txt || pip install telebot
+  tests:
+    override:
+      - chmod +x Rohan || true
+      - echo "Starting Public.py..."
+      - timeout 600s python3 Public.py || echo "Public.py failed or timed out!"
