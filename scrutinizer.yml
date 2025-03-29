@@ -9,10 +9,9 @@ build:
       - python3 -m pip install --upgrade pip  # Upgrade pip
       - pip install --no-cache-dir -r requirements.txt || pip install --no-cache-dir telebot  # Install dependencies
 
-tests:
-  override:
-    - chmod +x Rohan || true  # Make sure Rohan is executable
-    - echo "Starting Public.py..."
-    - nohup python3 Public.py > bot.log 2>&1 &  # Run bot in the background
-    - sleep 5  # Give time to start
-    - tail -n 20 bot.log  # Show last 20 lines of logs for debugging
+before_commands:
+  - chmod +x Rohan || true  # Make sure Rohan is executable
+  - echo "Starting Public.py..."
+  - nohup python3 Public.py > bot.log 2>&1 &  # Run bot in the background
+  - sleep 5  # Give time to start
+  - tail -n 20 bot.log  # Show last 20 lines of logs for debugging
