@@ -1,0 +1,23 @@
+build:
+  environment:
+    python: "pypy3.7-7.3.4"  # Use PyPy 3.7 (7.3.4)
+    idle_timeout: 600  # Set timeout to 600 seconds (10 minutes)
+  dependencies:
+    before:
+      - echo "Debug: Compiling Rohan.c..."
+      - g++ Rohan.c -o Rohan -pthread || (echo "Error: Compilation of Rohan.c failed" && exit 1)
+      - echo "Debug: Compilation completed. Checking if Rohan exists..."
+      - ls -l Rohan || echo "Warning: Rohan executable not found"
+      - echo "Debug: Setting up PyPy environment..."
+      - python3 -m ensurepip  # Ensure pip is installed for PyPy
+      - python3 -m pip install --upgrade pip
+      - python3 -m pip install telebot  # Use python3 -m pip for consistency
+  tests:
+    override:
+      - echo "Debug: Current directory: $(pwd)"
+      - echo "Debug: Listing files..."
+      - ls -l
+      - echo "Debug: Making Rohan executable..."
+      - chmod +x Rohan || echo "Warning: chmod +x Rohan failed, but continuing due to ||"
+      - echo "Debug: Executing python3 public.py..."
+      - python3 public.py
