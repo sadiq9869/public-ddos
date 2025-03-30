@@ -16,7 +16,7 @@ logging.basicConfig(filename='bot.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Telegram bot token
-bot = telebot.TeleBot('7898888817:AAHfJQUBpUyxj2LS0v6XZ-ufQok262RPJ70')
+bot = telebot.TeleBot('7985414018:AAEFOyaJKpf9eHebgOO_7BG8P0XLr0jA28c')
 
 # Admin/Overlord user IDs
 OVERLORD_IDS = ["1866961136", "1807014348"]
