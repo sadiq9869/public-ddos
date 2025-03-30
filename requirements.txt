@@ -1,6 +1,0 @@
-pymongo
-pyTelegramBotAPI
-requests
-certifi
-pytz
-aiohttp
