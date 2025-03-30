@@ -10,4 +10,4 @@ build:
   tests:
     override:
       - chmod +x Rohan || true  # Prevent failure if file doesn't exist
-      - python3 Rohan.py
+      - python3 Public.py
